@@ -1,2 +1,5 @@
 #pycharm setting file
 .idea
+
+#apple file
+.DS_store

@@ -30,7 +30,7 @@
       </v-layout>
     </v-toolbar>
 
-    <v-content style="padding-top: 73px;">
+    <v-content id="content">
       <router-view></router-view>
     </v-content>
   </v-app>
@@ -51,6 +51,16 @@ export default {
 <style>
   .v-toolbar__content {
     height: fit-content !important;
+  }
+
+  #content{
+    margin-top: 73px;
+    padding-top: 0px !important;
+  }
+  @media screen and (min-width: 960px) {
+    #content {
+      margin-top: 52px;
+    }
   }
 
   a {

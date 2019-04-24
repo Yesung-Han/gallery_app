@@ -57,6 +57,7 @@ export default {
     margin-top: 73px;
     padding-top: 0px !important;
   }
+
   @media screen and (min-width: 960px) {
     #content {
       margin-top: 52px;

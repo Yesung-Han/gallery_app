@@ -28,8 +28,15 @@ passportConfig(passport);
 app.set('port', process.env.PORT || 8001);
 
 //배포시 없애야함.
+if(process.env.DEVELOP){
+    frontURL = "http://localhost:3000";
+}
+else{
+    frontURL = process.env.FRONT_URL;
+}
+
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin: frontURL,
     credentials: true,
 }))
 app.use(morgan('dev'));

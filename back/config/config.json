@@ -1,26 +1,59 @@
 {
   "development": {
-    "username": "root",
-    "password": "gkdl1122",
-    "database": "galleryapp",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+		"username": "test",
+		"password": "test",
+		"database": "test",
+		"host": "mysql",
+		"dialect": "mysql",
+		"dialectOptions": {
+			"dateStrings": true,
+			"typeCast": true
+		},
+		"timezone": "+09:00",
+		"operatorsAliases": false,
+		"pool": {
+			"max": 20,
+			"min": 0,
+			"idle": 5000
+		},
+    "logging": true
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+		"username": "test",
+		"password": "test",
+		"database": "test",
+		"host": "mysql",
+		"dialect": "mysql",
+		"dialectOptions": {
+			"dateStrings": true,
+			"typeCast": true
+		},
+		"timezone": "+09:00",
+		"operatorsAliases": false,
+		"pool": {
+			"max": 20,
+			"min": 0,
+			"idle": 5000
+		},
+    "logging": true
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+		"username": "test",
+		"password": "test",
+		"database": "test",
+		"host": "mysql",
+		"dialect": "mysql",
+		"dialectOptions": {
+			"dateStrings": true,
+			"typeCast": true
+		},
+		"timezone": "+09:00",
+		"operatorsAliases": false,
+		"pool": {
+			"max": 20,
+			"min": 0,
+			"idle": 5000
+		},
+    "logging": true
   }
 }

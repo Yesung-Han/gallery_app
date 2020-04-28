@@ -1,0 +1,16 @@
+FROM node:10.15.3
+MAINTAINER cocoroocoo
+
+# 프론트 환경 구성
+# 프론트 작업 폴더 복사 생성 : COPY SRC DST
+COPY front /gallery_app/front
+# 도커에서 프론트 관련 명령어 돌릴 디렉토리 지정
+WORKDIR /gallery_app/front/
+# 프론트 관련 명령어 실행 : install 명령으로 dependency들 설치 -> build 명령으로 package.json에 등록된 build명령 실행
+# RUN npm install && npm build
+
+# .sh파일을 워크 디렉토리 안으로 복사
+COPY compose/vue/start-dev.sh /start-dev.sh
+
+# 복사한 .sh파일에 권한 부여
+RUN chmod +x /*.sh

@@ -1,0 +1,71 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: test
+    ports:
+      - '3306:3306'
+    command: [mysqld, --character-set-server=utf8, --collation-server=utf8_unicode_ci]
+    healthcheck:
+      test: 'mysqladmin -uroot -proot ping'
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    expose:
+      - '3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - default-network
+      
+  client:
+    build:
+      context: .
+      dockerfile: ./compose/vue/Dockerfile-dev
+    command: /start-dev.sh
+    volumes:
+      - ./client:/home/service/test/client/
+      - client_node_modules:/home/service/test/client/node_modules/
+    ports:
+      - '3000:3000'
+    stdin_open: false
+    networks:
+      - default-network
+      
+  backend:
+    build:
+      context: .
+      dockerfile: ./compose/express/Dockerfile-dev
+    command: /start-dev.sh
+    environment:
+      - COOKIE_SECRET=ㅁㅁㅁㅁㅁㅁ
+      - PORT=8001
+      - ADMIN_ID=ㅁㅁㅁㅁㅁ
+      - ADMIN_PWD=ㅁㅁㅁㅁㅁㅁ
+      - AWSAccessKeyId=ㅁㅁㅁㅁㅁ
+      - AWSSecretKey=ㅁㅁㅁㅁㅁ
+    depends_on:
+      - mysql
+    ports:
+      - '8001:8001'
+    expose:
+      - '8001'
+    networks:
+      - default-network
+    volumes:
+      - ./backend:/home/service/test/backend/
+      - node_modules:/home/service/test/backend/node_modules/
+
+volumes:
+  mysql_data:
+  client_node_modules:
+  node_modules:
+
+networks:
+  default-network:
+    driver: bridge

@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-  outputDir : path.resolve(__dirname, "../../back/public/"),
   devServer: {
     historyApiFallback: true,
+    port: 3000,
     proxy: {
       '/': {
         target: 'http://localhost:8001/',

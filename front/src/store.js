@@ -4,6 +4,8 @@ import Axios from 'axios'
 
 Vue.use(Vuex);
 
+Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+
 export const store = new Vuex.Store({
     //this.$store.state.변수명 으로 접근
     state: {

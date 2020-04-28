@@ -29,7 +29,7 @@ app.set('port', process.env.PORT || 8001);
 
 //배포시 없애야함.
 app.use(cors({
-    origin:"http://localhost:8080",
+    origin:"http://localhost:3000",
     credentials: true,
 }))
 app.use(morgan('dev'));

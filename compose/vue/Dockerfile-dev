@@ -6,6 +6,10 @@ MAINTAINER cocoroocoo
 COPY front /gallery_app/front
 # 도커에서 프론트 관련 명령어 돌릴 디렉토리 지정
 WORKDIR /gallery_app/front/
+
+# 개발 환경 일 경우 :
+ENV NODE_ENV=production
+
 # 프론트 관련 명령어 실행 : install 명령으로 dependency들 설치 -> build 명령으로 package.json에 등록된 build명령 실행
 # RUN npm install && npm build
 

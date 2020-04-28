@@ -43,7 +43,7 @@ services:
       dockerfile: ./compose/express/Dockerfile-dev
     command: /start-dev.sh
     environment:
-      - COOKIE_SECRET=ㅁㅁㅁㅁㅁㅁ
+      - COOKIE_SECRET=ㅁㅁㅁㅁㅁㅁㅁㅁ
       - PORT=8001
       - ADMIN_ID=ㅁㅁㅁㅁㅁ
       - ADMIN_PWD=ㅁㅁㅁㅁㅁㅁ

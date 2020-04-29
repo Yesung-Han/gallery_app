@@ -28,8 +28,12 @@ services:
       context: .
       dockerfile: ./compose/vue/Dockerfile-dev
     command: /start-dev.sh
+    environment:
+      - FRONT_BUILD_DIR=/home/service/test/front_build/build/
+      - DOCKER_COMPOSE=true
     volumes:
-      - ./client:/home/service/test/client/
+      - ./front:/home/service/test/client/
+      - ./front/public:/home/service/test/front_build/
       - client_node_modules:/home/service/test/client/node_modules/
     ports:
       - '3000:3000'
@@ -43,12 +47,14 @@ services:
       dockerfile: ./compose/express/Dockerfile-dev
     command: /start-dev.sh
     environment:
-      - COOKIE_SECRET=ㅁㅁㅁㅁㅁㅁㅁㅁ
+      - COOKIE_SECRET=gallerysecret
       - PORT=8001
-      - ADMIN_ID=ㅁㅁㅁㅁㅁ
-      - ADMIN_PWD=ㅁㅁㅁㅁㅁㅁ
-      - AWSAccessKeyId=ㅁㅁㅁㅁㅁ
-      - AWSSecretKey=ㅁㅁㅁㅁㅁ
+      - ADMIN_ID=halamv
+      - ADMIN_PWD=ekfflekrna0511
+      - AWSAccessKeyId=AKIAJKSM4NJJAGEXRKFQ
+      - AWSSecretKey=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
+      - FRONT_BUILD_DIR=/home/service/test/front_build/build/
+      - DOCKER_COMPOSE=true
     depends_on:
       - mysql
     ports:
@@ -58,7 +64,8 @@ services:
     networks:
       - default-network
     volumes:
-      - ./backend:/home/service/test/backend/
+      - ./back:/home/service/test/backend/
+      - ./front/public:/home/service/test/front_build/
       - node_modules:/home/service/test/backend/node_modules/
 
 volumes:

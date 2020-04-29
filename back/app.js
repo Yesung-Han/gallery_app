@@ -27,20 +27,16 @@ passportConfig(passport);
 
 app.set('port', process.env.PORT || 8001);
 
-//배포시 없애야함.
-if(process.env.DEVELOP){
-    frontURL = "http://localhost:3000";
+app.use(cors());
+app.use(morgan('dev'));
+
+if(process.env.DOCKER_COMPOSE){
+    app.use(express.static(process.env.FRONT_BUILD_DIR));
 }
 else{
-    frontURL = process.env.FRONT_URL;
+    app.use(express.static(path.join(__dirname, '../front/public/build')));
 }
 
-app.use(cors({
-    origin: frontURL,
-    credentials: true,
-}))
-app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({

@@ -53,7 +53,7 @@ export const store = new Vuex.Store({
     actions:{
         getNote:(context)=>{
             return new Promise(()=>{
-                Axios.get('http://localhost:8001/note',{
+                Axios.get('/note',{
                     withCredentials: true,
                 })
                 .then(res=>{
@@ -69,7 +69,7 @@ export const store = new Vuex.Store({
         },
         updateNote:(context, payload)=>{
             return new Promise((resolve, reject)=>{
-                Axios.post('http://localhost:8001/note',payload,{
+                Axios.post('/note',payload,{
                     withCredentials: true,
                 })
                 .then((res)=>{
@@ -84,7 +84,7 @@ export const store = new Vuex.Store({
         },
         isLoggedIn:(context)=>{
             return new Promise((resolve,reject)=>{
-                Axios.get('http://localhost:8001/auth',{
+                Axios.get('/auth',{
                     withCredentials: true,
                 })
                 .then((res)=>{
@@ -103,7 +103,7 @@ export const store = new Vuex.Store({
         },
         logout:(context)=>{
             return new Promise((resolve, reject)=>{
-                Axios.get('http://localhost:8001/auth/logout', {
+                Axios.get('/auth/logout', {
                     withCredentials: true,
                 })
                 .then(res=>{
@@ -121,7 +121,7 @@ export const store = new Vuex.Store({
         login:(context, payload)=>{
             return new Promise((resolve, reject)=>{
                 console.log(payload);
-                Axios.post('http://localhost:8001/auth/login', payload, {
+                Axios.post('/auth/login', payload, {
                     withCredentials: true,
                 })
                 .then((res)=>{
@@ -136,7 +136,7 @@ export const store = new Vuex.Store({
         },
         getWorksByYear:(context, payload)=>{
             return new Promise((resolve, reject)=>{                
-                Axios.get('http://localhost:8001/work/', {
+                Axios.get('/work/', {
                     params: {
                         year: payload,
                     }
@@ -152,7 +152,7 @@ export const store = new Vuex.Store({
         },
         uploadImg: (context, payload)=>{
             return new Promise((resolve, reject)=>{                
-                Axios.post('http://localhost:8001/upload', payload, {
+                Axios.post('/upload', payload, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
@@ -185,7 +185,7 @@ export const store = new Vuex.Store({
                         
                         console.log(newWork);
 
-                        Axios.post('http://localhost:8001/work',newWork);
+                        Axios.post('/work',newWork);
                     })
                     .then((res)=>{
                         resolve(res);
@@ -197,7 +197,7 @@ export const store = new Vuex.Store({
         },
         updateShowMain: (context, payload)=>{
             return new Promise((resolve, reject)=>{
-                Axios.patch('http://localhost:8001/work/',payload, {
+                Axios.patch('/work/',payload, {
                     params: {
                         id: payload.id,
                     }
@@ -212,7 +212,7 @@ export const store = new Vuex.Store({
         },
         getShowMain:()=>{
             return new Promise((resolve, reject)=>{
-                Axios.get('http://localhost:8001/work/showMain')
+                Axios.get('/work/showMain')
                 .then((res)=>{
                     resolve(res.data);
                 })
@@ -223,7 +223,7 @@ export const store = new Vuex.Store({
         },
         deleteWork: (context, payload)=>{
             return new Promise((resolve, reject)=>{
-                Axios.delete('http://localhost:8001/work/', {
+                Axios.delete('/work/', {
                     params: {
                         id: payload.id,
                     }

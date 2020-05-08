@@ -5,7 +5,7 @@
         <v-flex md6 xs12 style="align-self: center; padding: 10px 15px;" >
           <v-toolbar-title class="headline text-uppercase">
             <router-link :to="{name: 'home'}" >
-              <span style="left: 10px;"><br>Kim yong suk</span>
+              <span style="left: 10px;">Kim yong suk</span>
             </router-link>
           </v-toolbar-title>
         </v-flex>
